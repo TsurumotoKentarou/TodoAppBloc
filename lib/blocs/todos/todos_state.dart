@@ -24,3 +24,12 @@ class TodosSuccess extends TodosState {
   @override
   List<Object> get props => [this.todos];
 }
+
+class TodosError extends TodosState {
+  final Error error;
+
+  TodosError({@required Error error}) : this.error = error;
+
+  @override
+  List<Object> get props => [];
+}

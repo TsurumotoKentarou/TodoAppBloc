@@ -23,16 +23,22 @@ class TodoListScreen extends StatelessWidget {
             } else if (state is TodosInProgress) {
               return Text('TodosInProgress');
             } else if (state is TodosSuccess) {
-              return StreamBuilder(builder:
-                  (BuildContext context, AsyncSnapshot<List<Todo>> snapshot) {
-                if (snapshot.data == null) {
-                  print("だめだ");
-                  return Text('だめだ');
-                }
-                return TodoListView(todos: snapshot.data);
-              });
+              return StreamBuilder(
+                  stream: state.todos,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<Todo>> snapshot) {
+                    if (snapshot.hasError) {
+                      print(snapshot.error);
+                    }
+                    if (!snapshot.hasData) {
+                      return CircularProgressIndicator();
+                    }
+                    return TodoListView(todos: snapshot.data);
+                  });
+            } else if (state is TodosError) {
+              return Text('エラーが発生したぞ: TodosError');
             } else {
-              return Text('なんだこれ');
+              return Text('');
             }
           },
         ));

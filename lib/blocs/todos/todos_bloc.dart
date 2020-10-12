@@ -20,6 +20,10 @@ class TodoBloc extends Bloc<TodosEvent, TodosState> {
 
   Stream<TodosState> _mapEventTodosLoadToState() async* {
     yield TodosInProgress();
-    yield TodosSuccess(todos: this.repository.fetch());
+    try {
+      yield TodosSuccess(todos: this.repository.fetch());
+    } catch (_) {
+      yield TodosError(error: _);
+    }
   }
 }

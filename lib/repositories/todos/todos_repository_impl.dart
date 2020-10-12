@@ -5,10 +5,6 @@ import 'package:todo_app_bloc/repositories/todos/todos_repository.dart';
 class TodosRepositoryImpl extends TodosRepository {
   @override
   Stream<List<Todo>> fetch() {
-    // final data =  FirebaseFirestore.instance
-    //     .collection('todos')
-    //     .snapshots();
-    //
     return FirebaseFirestore.instance
         .collection('todos')
         .snapshots()
