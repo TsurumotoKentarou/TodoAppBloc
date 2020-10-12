@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app_bloc/blocs/todolist/todo_list_bloc.dart';
-import 'package:todo_app_bloc/blocs/todolist/todo_list_event.dart';
-import 'package:todo_app_bloc/blocs/todolist/todo_list_state.dart';
+import 'package:todo_app_bloc/blocs/todolist/todo_list.dart';
 import 'package:todo_app_bloc/entities/todo.dart';
 import 'package:todo_app_bloc/repositories/todolist/todo_list_repository_impl.dart';
 import 'package:todo_app_bloc/views/todo_list_view.dart';
