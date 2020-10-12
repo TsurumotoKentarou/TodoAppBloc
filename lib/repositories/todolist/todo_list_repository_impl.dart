@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:todo_app_bloc/entities/todo.dart';
-import 'package:todo_app_bloc/repositories/todos/todo_list_repository.dart';
+import 'package:todo_app_bloc/repositories/todolist/todo_list_repository.dart';
 
 class TodoListRepositoryImpl extends TodoListRepository {
   @override

@@ -17,12 +17,12 @@ class TodoListInProgress extends TodoListState {
 }
 
 class TodoListSuccess extends TodoListState {
-  final Stream<List<Todo>> todos;
+  final Stream<List<Todo>> todoList;
 
-  const TodoListSuccess({@required this.todos}) : assert(todos != null);
+  const TodoListSuccess({@required this.todoList}) : assert(todoList != null);
 
   @override
-  List<Object> get props => [this.todos];
+  List<Object> get props => [this.todoList];
 }
 
 class TodoListError extends TodoListState {

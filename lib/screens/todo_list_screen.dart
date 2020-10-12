@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app_bloc/blocs/todos/todo_list_bloc.dart';
-import 'package:todo_app_bloc/blocs/todos/todo_list_event.dart';
-import 'package:todo_app_bloc/blocs/todos/todo_list_state.dart';
+import 'package:todo_app_bloc/blocs/todolist/todo_list_bloc.dart';
+import 'package:todo_app_bloc/blocs/todolist/todo_list_event.dart';
+import 'package:todo_app_bloc/blocs/todolist/todo_list_state.dart';
 import 'package:todo_app_bloc/entities/todo.dart';
-import 'package:todo_app_bloc/repositories/todos/todo_list_repository_impl.dart';
+import 'package:todo_app_bloc/repositories/todolist/todo_list_repository_impl.dart';
 import 'package:todo_app_bloc/views/todo_list_view.dart';
 
 class TodoListScreen extends StatelessWidget {
@@ -25,7 +25,7 @@ class TodoListScreen extends StatelessWidget {
               return Text('TodoListInProgress');
             } else if (state is TodoListSuccess) {
               return StreamBuilder(
-                  stream: state.todos,
+                  stream: state.todoList,
                   builder: (BuildContext context,
                       AsyncSnapshot<List<Todo>> snapshot) {
                     if (snapshot.hasError) {
@@ -34,7 +34,7 @@ class TodoListScreen extends StatelessWidget {
                     if (!snapshot.hasData) {
                       return CircularProgressIndicator();
                     }
-                    return TodoListView(todos: snapshot.data);
+                    return TodoListView(todoList: snapshot.data);
                   });
             } else if (state is TodoListError) {
               return Text('エラーが発生したぞ: TodoListError');
