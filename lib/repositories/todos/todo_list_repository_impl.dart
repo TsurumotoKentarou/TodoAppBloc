@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:todo_app_bloc/entities/todo.dart';
-import 'package:todo_app_bloc/repositories/todos/todos_repository.dart';
+import 'package:todo_app_bloc/repositories/todos/todo_list_repository.dart';
 
-class TodosRepositoryImpl extends TodosRepository {
+class TodoListRepositoryImpl extends TodoListRepository {
   @override
   Stream<List<Todo>> fetch() {
     return FirebaseFirestore.instance

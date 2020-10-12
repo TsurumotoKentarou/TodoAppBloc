@@ -2,33 +2,33 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:todo_app_bloc/entities/todo.dart';
 
-abstract class TodosState extends Equatable {
-  const TodosState();
+abstract class TodoListState extends Equatable {
+  const TodoListState();
 }
 
-class TodosEmpty extends TodosState {
+class TodoListEmpty extends TodoListState {
   @override
   List<Object> get props => [];
 }
 
-class TodosInProgress extends TodosState {
+class TodoListInProgress extends TodoListState {
   @override
   List<Object> get props => [];
 }
 
-class TodosSuccess extends TodosState {
+class TodoListSuccess extends TodoListState {
   final Stream<List<Todo>> todos;
 
-  const TodosSuccess({@required this.todos}) : assert(todos != null);
+  const TodoListSuccess({@required this.todos}) : assert(todos != null);
 
   @override
   List<Object> get props => [this.todos];
 }
 
-class TodosError extends TodosState {
+class TodoListError extends TodoListState {
   final Error error;
 
-  TodosError({@required Error error}) : this.error = error;
+  TodoListError({@required Error error}) : this.error = error;
 
   @override
   List<Object> get props => [];

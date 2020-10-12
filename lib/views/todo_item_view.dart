@@ -22,7 +22,11 @@ class TodoItemView extends StatelessWidget {
         ),
         Container(
           child: Checkbox(
-              value: this.todo.isDone, onChanged: (check) => {print(check)}),
+              value: this.todo.isDone,
+              onChanged: (check) => {
+                    print('check is : ${check}'),
+                    this.todo.isDone = check,
+                  }),
         )
       ],
     );

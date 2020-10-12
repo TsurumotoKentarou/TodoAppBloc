@@ -1,28 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app_bloc/blocs/todos/todos_bloc.dart';
-import 'package:todo_app_bloc/blocs/todos/todos_event.dart';
-import 'package:todo_app_bloc/blocs/todos/todos_state.dart';
+import 'package:todo_app_bloc/blocs/todos/todo_list_bloc.dart';
+import 'package:todo_app_bloc/blocs/todos/todo_list_event.dart';
+import 'package:todo_app_bloc/blocs/todos/todo_list_state.dart';
 import 'package:todo_app_bloc/entities/todo.dart';
-import 'package:todo_app_bloc/repositories/todos/todos_repository_impl.dart';
+import 'package:todo_app_bloc/repositories/todos/todo_list_repository_impl.dart';
 import 'package:todo_app_bloc/views/todo_list_view.dart';
 
 class TodoListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bloc = TodoBloc(TodosEmpty(), repository: TodosRepositoryImpl());
-    bloc.add(TodosLoad());
+    final bloc =
+        TodoBloc(TodoListEmpty(), repository: TodoListRepositoryImpl());
+    bloc.add(TodoListLoad());
     return Scaffold(
         appBar: AppBar(title: Text('Todoアプリ')),
-        body: BlocBuilder<TodoBloc, TodosState>(
+        body: BlocBuilder<TodoBloc, TodoListState>(
           cubit: bloc,
           builder: (context, state) {
-            if (state is TodosEmpty) {
-              return Text('TodosEmpty');
-            } else if (state is TodosInProgress) {
-              return Text('TodosInProgress');
-            } else if (state is TodosSuccess) {
+            if (state is TodoListEmpty) {
+              return Text('TodoListEmpty');
+            } else if (state is TodoListInProgress) {
+              return Text('TodoListInProgress');
+            } else if (state is TodoListSuccess) {
               return StreamBuilder(
                   stream: state.todos,
                   builder: (BuildContext context,
@@ -35,8 +36,8 @@ class TodoListScreen extends StatelessWidget {
                     }
                     return TodoListView(todos: snapshot.data);
                   });
-            } else if (state is TodosError) {
-              return Text('エラーが発生したぞ: TodosError');
+            } else if (state is TodoListError) {
+              return Text('エラーが発生したぞ: TodoListError');
             } else {
               return Text('');
             }
