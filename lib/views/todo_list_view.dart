@@ -11,7 +11,9 @@ class TodoListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
         itemBuilder: (BuildContext context, int index) {
-          return TodoItemView();
+          return TodoItemView(
+            todo: this.todos[index],
+          );
         },
         separatorBuilder: (BuildContext context, int index) {
           return Divider();

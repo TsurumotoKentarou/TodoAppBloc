@@ -11,7 +11,7 @@ class TodosRepositoryImpl extends TodosRepository {
         .map((event) {
       return event.docs.map((e) {
         Map<String, dynamic> data = e.data();
-        final todo = Todo(name: data['name'], isDone: false);
+        final todo = Todo.fromJson(data);
         return todo;
       }).toList();
     });
