@@ -4,10 +4,10 @@ import 'package:todo_app_bloc/blocs/todolist/todo_list_event.dart';
 import 'package:todo_app_bloc/blocs/todolist/todo_list_state.dart';
 import 'package:todo_app_bloc/repositories/todolist/todo_list_repository.dart';
 
-class TodoBloc extends Bloc<TodoListEvent, TodoListState> {
+class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
   final TodoListRepository repository;
 
-  TodoBloc(TodoListState initialState, {@required this.repository})
+  TodoListBloc(TodoListState initialState, {@required this.repository})
       : super(initialState);
 
   @override

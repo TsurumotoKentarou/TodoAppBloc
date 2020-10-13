@@ -9,12 +9,12 @@ import 'package:todo_app_bloc/views/todo_list_view.dart';
 class TodoListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bloc =
-        TodoBloc(TodoListEmpty(), repository: TodoListRepositoryImpl());
+    final TodoListBloc bloc =
+        TodoListBloc(TodoListEmpty(), repository: TodoListRepositoryImpl());
     bloc.add(TodoListLoad());
     return Scaffold(
         appBar: AppBar(title: Text('Todoアプリ')),
-        body: BlocBuilder<TodoBloc, TodoListState>(
+        body: BlocBuilder<TodoListBloc, TodoListState>(
           cubit: bloc,
           builder: (context, state) {
             if (state is TodoListEmpty) {

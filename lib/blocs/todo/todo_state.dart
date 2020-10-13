@@ -6,6 +6,13 @@ abstract class TodoState extends Equatable {
   const TodoState();
 }
 
+class TodoEmpty extends TodoState {
+  const TodoEmpty();
+
+  @override
+  List<Object> get props => [];
+}
+
 // Todoの追加
 class TodoAdding extends TodoState {
   @override

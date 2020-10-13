@@ -16,12 +16,11 @@ class TodoRepositoryImpl extends TodoRepository {
   }
 
   @override
-  Stream<DocumentReference> update(
-      {@required Todo todo, @required String documentId}) {
+  Stream<DocumentReference> update({@required Todo todo}) {
     Map<String, dynamic> todoJson = todo.toJson();
     return FirebaseFirestore.instance
         .collection('todos')
-        .doc(documentId)
+        .doc(todo.documentId)
         .update(todoJson)
         .asStream();
   }
