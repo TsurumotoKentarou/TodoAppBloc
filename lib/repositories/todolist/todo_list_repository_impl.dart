@@ -11,7 +11,8 @@ class TodoListRepositoryImpl extends TodoListRepository {
         .map((event) {
       return event.docs.map((e) {
         Map<String, dynamic> data = e.data();
-        final todo = Todo.fromJson(data);
+        data['documentId'] = e.id;
+        final Todo todo = Todo.fromJson(data);
         return todo;
       }).toList();
     });
