@@ -7,14 +7,14 @@ class TodoListRepositoryImpl extends TodoListRepository {
   Stream<List<Todo>> fetch() {
     return FirebaseFirestore.instance
         .collection('todos')
-        .snapshots()
-        .map((event) {
-      return event.docs.map((e) {
+        .get()
+        .then((querySnapshot) {
+      return querySnapshot.docs.map((e) {
         Map<String, dynamic> data = e.data();
         data['documentId'] = e.id;
         final Todo todo = Todo.fromJson(data);
         return todo;
       }).toList();
-    });
+    }).asStream();
   }
 }
