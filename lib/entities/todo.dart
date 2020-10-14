@@ -6,11 +6,15 @@ part 'todo.g.dart';
 
 @JsonSerializable()
 class Todo {
+  @JsonKey(toJson: _toNull, includeIfNull: false)
   final String documentId;
+
   String name;
   bool isDone;
 
-  Todo(this.documentId, {@required this.name, @required this.isDone});
+  static _toNull(_) => null;
+
+  Todo({this.documentId, @required this.name, @required this.isDone});
   factory Todo.fromJson(Map<String, dynamic> json) => _$TodoFromJson(json);
   Map<String, dynamic> toJson() => _$TodoToJson(this);
 }

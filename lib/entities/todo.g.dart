@@ -8,14 +8,23 @@ part of 'todo.dart';
 
 Todo _$TodoFromJson(Map<String, dynamic> json) {
   return Todo(
-    json['documentId'] as String,
+    documentId: json['documentId'] as String,
     name: json['name'] as String,
     isDone: json['isDone'] as bool,
   );
 }
 
-Map<String, dynamic> _$TodoToJson(Todo instance) => <String, dynamic>{
-      'documentId': instance.documentId,
-      'name': instance.name,
-      'isDone': instance.isDone,
-    };
+Map<String, dynamic> _$TodoToJson(Todo instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('documentId', Todo._toNull(instance.documentId));
+  val['name'] = instance.name;
+  val['isDone'] = instance.isDone;
+  return val;
+}
