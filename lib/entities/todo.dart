@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-// ジェネレートされたクラスからUserクラスのprivateメンバ変数にアクセスするため
 part 'todo.g.dart';
 
 @JsonSerializable()
 class Todo {
   @JsonKey(toJson: _toNull, includeIfNull: false)
   final String documentId;
-
   String name;
   bool isDone;
 
