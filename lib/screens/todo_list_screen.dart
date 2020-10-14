@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app_bloc/blocs/todolist/todo_list.dart';
 import 'package:todo_app_bloc/entities/todo.dart';
-import 'package:todo_app_bloc/repositories/todolist/todo_list_repository_impl.dart';
 import 'package:todo_app_bloc/views/todo_list_view.dart';
 
 class TodoListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final TodoListBloc bloc =
-        TodoListBloc(TodoListEmpty(), repository: TodoListRepositoryImpl());
+    final TodoListBloc bloc = BlocProvider.of<TodoListBloc>(context);
     bloc.add(TodoListLoad());
     return Scaffold(
         appBar: AppBar(title: Text('Todoアプリ')),

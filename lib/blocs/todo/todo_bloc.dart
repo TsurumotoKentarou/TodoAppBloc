@@ -23,9 +23,10 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     } else if (event is UpdateTodo) {
       yield TodoUpdating();
       try {
-        yield TodoUpdateSuccess(
-            todoReference: this.repository.update(todo: event.todo));
+        final stream = this.repository.update(todo: event.todo);
+        yield TodoUpdateSuccess(todoReference: stream);
       } catch (e) {
+        print(e.toString());
         yield TodoUpdateError(e);
       }
     }

@@ -5,5 +5,5 @@ import 'package:todo_app_bloc/entities/todo.dart';
 abstract class TodoRepository {
   Stream<DocumentReference> add({@required Todo todo});
 
-  Stream<DocumentReference> update({@required Todo todo});
+  Stream<void> update({@required Todo todo});
 }
